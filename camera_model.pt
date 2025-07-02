@@ -1,0 +1,9 @@
+import torch
+import torch.nn as nn
+import torchvision.models as models
+
+model = models.resnet18(pretrained=False)
+model.fc = nn.Linear(model.fc.in_features, 2)  # water / no_water
+
+torch.save(model, 'camera_model.pt')
+print("camera_model.pt создан!")
